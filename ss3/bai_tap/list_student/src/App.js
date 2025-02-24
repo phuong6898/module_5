@@ -1,7 +1,7 @@
 import './App.css';
-import React, { useState } from "react";
+import React, {Component} from "react";
 
-class App extends React.Component {
+class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -36,7 +36,7 @@ class App extends React.Component {
 
   handleSelect = (studentSelected, index) => {
     this.setState({
-      form: JSON.parse(JSON.stringify(studentSelected)),
+      form: {...studentSelected},
       indexSelected: index
     });
   };
