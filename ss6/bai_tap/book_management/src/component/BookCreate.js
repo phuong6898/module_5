@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import axios from "axios";
+import { Container, Form, Button, Modal } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import { Container, Form, Button } from "react-bootstrap";
+import { createBook } from "../service/BookService";
 
 function BookCreate() {
     const [title, setTitle] = useState("");
     const [quantity, setQuantity] = useState("");
+    const [showSuccessModal, setShowSuccessModal] = useState(false);
     const navigate = useNavigate();
 
     const handleAdd = async (e) => {
@@ -16,15 +17,16 @@ function BookCreate() {
         }
 
         try {
-            const res = await axios.post(
-                "https://my-json-server.typicode.com/codegym-vn/mock-api-books/books",
-                { title, quantity }
-            );
-            alert(`Create book success! (Status: ${res.status})`);
-            navigate("/");
+            const res = await createBook({ title, quantity });
+            setShowSuccessModal(true);
         } catch (error) {
             console.error("Error creating book:", error);
         }
+    };
+
+    const handleModalClose = () => {
+        setShowSuccessModal(false);
+        navigate("/");
     };
 
     return (
@@ -53,6 +55,18 @@ function BookCreate() {
                     Add
                 </Button>
             </Form>
+
+            <Modal show={showSuccessModal} onHide={handleModalClose}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Success</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>Create book success!</Modal.Body>
+                <Modal.Footer>
+                    <Button variant="primary" onClick={handleModalClose}>
+                        OK
+                    </Button>
+                </Modal.Footer>
+            </Modal>
         </Container>
     );
 }

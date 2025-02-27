@@ -1,22 +1,21 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import { Container, Form, Button, Modal } from "react-bootstrap";
 import { useNavigate, useParams } from "react-router-dom";
-import { Container, Form, Button } from "react-bootstrap";
+import { getBookById, updateBook } from "../service/BookService";
 
 function BookEdit() {
     const [title, setTitle] = useState("");
     const [quantity, setQuantity] = useState("");
+    const [showSuccessModal, setShowSuccessModal] = useState(false);
     const { id } = useParams();
     const navigate = useNavigate();
 
     useEffect(() => {
         const fetchBook = async () => {
             try {
-                const res = await axios.get(
-                    `https://my-json-server.typicode.com/codegym-vn/mock-api-books/books/${id}`
-                );
-                setTitle(res.data.title);
-                setQuantity(res.data.quantity);
+                const data = await getBookById(id);
+                setTitle(data.title);
+                setQuantity(data.quantity);
             } catch (error) {
                 console.error("Error fetching book:", error);
             }
@@ -30,17 +29,17 @@ function BookEdit() {
             alert("Please fill all fields");
             return;
         }
-
         try {
-            const res = await axios.put(
-                `https://my-json-server.typicode.com/codegym-vn/mock-api-books/books/${id}`,
-                { title, quantity }
-            );
-            alert(`Update success! (Status: ${res.status})`);
-            navigate("/");
+            const res = await updateBook(id, { title, quantity });
+            setShowSuccessModal(true);
         } catch (error) {
             console.error("Error updating book:", error);
         }
+    };
+
+    const handleModalClose = () => {
+        setShowSuccessModal(false);
+        navigate("/");
     };
 
     return (
@@ -69,6 +68,18 @@ function BookEdit() {
                     Save
                 </Button>
             </Form>
+
+            <Modal show={showSuccessModal} onHide={handleModalClose}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Success</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>Update book success!</Modal.Body>
+                <Modal.Footer>
+                    <Button variant="primary" onClick={handleModalClose}>
+                        OK
+                    </Button>
+                </Modal.Footer>
+            </Modal>
         </Container>
     );
 }

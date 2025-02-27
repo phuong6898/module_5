@@ -1,19 +1,19 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
-import { Container, Table, Button } from "react-bootstrap";
+import { Container, Table, Button, Modal } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
+import { getBooks, deleteBook } from "../service/BookService";
 
 function BookList() {
     const [books, setBooks] = useState([]);
     const navigate = useNavigate();
+    const [showDeleteModal, setShowDeleteModal] = useState(false);
+    const [selectedBook, setSelectedBook] = useState(null);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const res = await axios.get(
-                    "https://my-json-server.typicode.com/codegym-vn/mock-api-books/books"
-                );
-                setBooks(res.data);
+                const data = await getBooks();
+                setBooks(data);
             } catch (error) {
                 console.error("Error fetching books:", error);
             }
@@ -21,18 +21,27 @@ function BookList() {
         fetchData();
     }, []);
 
-    const handleDelete = async (id) => {
-        if (!window.confirm("Are you sure to delete?")) return;
+    const handleDeleteClick = (book) => {
+        setSelectedBook(book);
+        setShowDeleteModal(true);
+    };
 
-        try {
-            const res = await axios.delete(
-                `https://my-json-server.typicode.com/codegym-vn/mock-api-books/books/${id}`
-            );
-            alert(`Delete success! (Status: ${res.status})`);
-            setBooks(books.filter((book) => book.id !== id));
-        } catch (error) {
-            console.error("Error deleting book:", error);
+    const handleConfirmDelete = async () => {
+        if (selectedBook) {
+            try {
+                const res = await deleteBook(selectedBook.id);
+                setBooks(books.filter((book) => book.id !== selectedBook.id));
+                setShowDeleteModal(false);
+                setSelectedBook(null);
+            } catch (error) {
+                console.error("Error deleting book:", error);
+            }
         }
+    };
+
+    const handleCancelDelete = () => {
+        setShowDeleteModal(false);
+        setSelectedBook(null);
     };
 
     return (
@@ -43,7 +52,6 @@ function BookList() {
                     Add a new Book
                 </Button>
             </div>
-
             <Table striped bordered hover>
                 <thead>
                 <tr>
@@ -65,7 +73,7 @@ function BookList() {
                             >
                                 Edit
                             </Button>
-                            <Button variant="danger" onClick={() => handleDelete(book.id)}>
+                            <Button variant="danger" onClick={() => handleDeleteClick(book)}>
                                 Delete
                             </Button>
                         </td>
@@ -73,6 +81,28 @@ function BookList() {
                 ))}
                 </tbody>
             </Table>
+
+            <Modal show={showDeleteModal} onHide={handleCancelDelete}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Confirm Delete</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    {selectedBook && (
+                        <p>
+                            Are you sure you want to delete the book "
+                            {selectedBook.title}"?
+                        </p>
+                    )}
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={handleCancelDelete}>
+                        Cancel
+                    </Button>
+                    <Button variant="danger" onClick={handleConfirmDelete}>
+                        Delete
+                    </Button>
+                </Modal.Footer>
+            </Modal>
         </Container>
     );
 }

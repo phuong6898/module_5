@@ -1,0 +1,14 @@
+{
+  "book": [
+    {
+      "id": "MS01",
+      "name": "Đấu phá thương khung",
+      "quantity": 50
+    },
+    {
+      "id": "MS02",
+      "name": "Tạo hóa chi môn",
+      "quantity": 100
+    }
+  ]
+}
