@@ -1,0 +1,17 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "phuong",
+      "email": "phuong@gmail.com",
+      "website": "hildegard.org"
+    },
+    {
+      "id": 2,
+      "name": "tung",
+      "email": "Stung@gmail.com",
+      "website": "anastasia.net"
+    }
+
+  ]
+}
