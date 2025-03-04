@@ -1,0 +1,162 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "bếp từ sun house",
+      "price": 510000,
+      "category": "bếp nấu ăn"
+    },
+    {
+      "id": 2,
+      "name": "máy tính ASUS Gamming",
+      "price": 21000000,
+      "category": "laptop"
+    }
+  ],
+  "order": [
+    {
+      "code": "DH0001",
+      "purchase": "2024-09-22",
+      "quantity": 4,
+      "products": [
+        {
+          "id": 1,
+          "name": "bếp từ sun house",
+          "price": 510000,
+          "category": "bếp nấu ăn"
+        }
+      ],
+      "totalAmount": 35500000
+    },
+    {
+      "code": "DH0002",
+      "purchase": "2024-11-15",
+      "quantity": 5,
+      "products": {
+        "id": 2,
+        "name": "máy tính ASUS Gamming",
+        "price": 21000000,
+        "category": "laptop"
+      },
+      "total_amount": 1500000
+    },
+    {
+      "id": "b996",
+      "purchase": "2025-03-02",
+      "quantity": 25,
+      "totalAmount": 250000,
+      "products": {
+        "name": "đâsd",
+        "price": 10000,
+        "category": "sad"
+      }
+    },
+    {
+      "id": "abd4",
+      "purchase": "2025-03-01",
+      "quantity": 54,
+      "totalAmount": 780570,
+      "products": {
+        "name": "ds",
+        "price": 14455,
+        "category": "ád"
+      }
+    },
+    {
+      "id": "ce64",
+      "purchase": "2025-03-08",
+      "quantity": 2,
+      "totalAmount": 92000000,
+      "products": {
+        "name": "tai nghe B&O Beoplay H100",
+        "price": 46000000,
+        "category": "tai nghe"
+      }
+    },
+    {
+      "id": "2212",
+      "purchase": "2025-03-01",
+      "quantity": 2,
+      "totalAmount": 908242,
+      "products": {
+        "name": "sada",
+        "price": 454121,
+        "category": "das"
+      }
+    },
+    {
+      "id": "14f5",
+      "code": "DH0003",
+      "purchase": "2025-03-01",
+      "quantity": 120,
+      "totalAmount": 6480,
+      "products": {
+        "name": "sda",
+        "price": 54,
+        "category": "sfa"
+      }
+    },
+    {
+      "id": "9782",
+      "code": "DH0004",
+      "purchase": "2025-03-01",
+      "quantity": 10,
+      "totalAmount": 25550,
+      "products": {
+        "name": "dsfsd",
+        "price": 2555,
+        "category": "sadasd"
+      }
+    },
+    {
+      "id": "d562",
+      "code": "DH0005",
+      "purchase": "2025-03-12",
+      "quantity": 5,
+      "totalAmount": 261100000,
+      "products": {
+        "name": "dfsd",
+        "price": 52220000,
+        "category": "46dff"
+      }
+    },
+    {
+      "id": "19a4",
+      "code": "DH0006",
+      "purchase": "2025-03-01",
+      "quantity": 2,
+      "totalAmount": 2,
+      "products": {
+        "name": "sd",
+        "price": 1,
+        "category": "d"
+      }
+    },
+    {
+      "id": "e265",
+      "code": "DH0007",
+      "purchase": "2025-03-01",
+      "quantity": 5,
+      "totalAmount": 2550000,
+      "products": {
+        "id": 1,
+        "name": "bếp từ sun house",
+        "price": 510000,
+        "category": "bếp nấu ăn"
+      }
+    },
+    {
+      "id": "830a",
+      "code": "DH0008",
+      "purchase": "2025-03-01",
+      "quantity": 5,
+      "totalAmount": 105000000,
+      "products": {
+        "id": 2,
+        "name": "máy tính ASUS Gamming",
+        "price": 21000000,
+        "category": "laptop"
+      }
+    }
+  ]
+}

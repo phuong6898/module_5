@@ -1,0 +1,42 @@
+{
+  "products": [
+    {
+      "id": "1",
+      "name": "quần kaki",
+      "importDay": "2024-10-25",
+      "quantity": 101,
+      "category": {
+        "idCategory": "MH01",
+        "nameCategory": "đồ nam",
+        "id": "8b6b"
+      }
+    },
+    {
+      "id": "2",
+      "name": "quần váy",
+      "importDay": "2025-01-01",
+      "quantity": 150,
+      "category": {
+        "idCategory": "MD0002",
+        "nameCategory": "đồ nữ"
+      }
+    }
+  ],
+  "category": [
+    {
+      "idCategory": "MH01",
+      "nameCategory": "đồ nam",
+      "id": "8b6b"
+    },
+    {
+      "idCategory": "MH02",
+      "nameCategory": "đồ nữ",
+      "id": "d0e6"
+    },
+    {
+      "idCategory": "MH03",
+      "nameCategory": "đồ trẻ em",
+      "id": "f9b0"
+    }
+  ]
+}
