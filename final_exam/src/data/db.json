@@ -2,13 +2,13 @@
   "products": [
     {
       "id": "1",
-      "name": "quần kaki",
+      "name": "áo",
       "importDay": "2024-10-25",
-      "quantity": 101,
+      "quantity": 200,
       "category": {
-        "idCategory": "MH01",
-        "nameCategory": "đồ nam",
-        "id": "8b6b"
+        "idCategory": "MH03",
+        "nameCategory": "đồ trẻ em",
+        "id": "f9b0"
       }
     },
     {

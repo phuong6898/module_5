@@ -47,6 +47,13 @@ function ProductList() {
     return (
         <Container className="mt-4">
             <h2 className="text-center mb-4">Quản lý sản phẩm</h2>
+            <Button
+                variant="success"
+                className="mb-3"
+                onClick={() => navigate("/add-product")}
+            >
+                Thêm sản phẩm mới
+            </Button>
             <SearchProduct
                 searchName={searchName}
                 setSearchName={setSearchName}

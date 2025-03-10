@@ -3,6 +3,7 @@ import { Navbar, Container, Nav } from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ProductList from "./component/ProductList";
 import ProductEdit from "./component/ProductEdit";
+import AddProduct from "./components/AddProduct";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Routes>
             <Route path="/" element={<ProductList />} />
             <Route path="/product/edit/:id" element={<ProductEdit />} />
+            <Route path="/add-product" element={<AddProduct />} />
           </Routes>
         </Container>
       </BrowserRouter>

@@ -3,7 +3,7 @@ import { toast } from "react-toastify";
 
 export const getProduct = async () => {
     try {
-        const response = await axios.get("http://localhost:8080/products");
+        const response = await axios.get("http://localhost:8080/api/products");
         return response.data;
     } catch (error) {
         console.error("Error fetching product", error);
@@ -14,7 +14,7 @@ export const getProduct = async () => {
 
 export const addProduct = async (product) => {
     try {
-        const response = await axios.post("http://localhost:8080/products", product);
+        const response = await axios.post("http://localhost:8080/api/products", product);
         return response.data;
     } catch (error) {
         console.error("Error adding product", error);
@@ -24,7 +24,7 @@ export const addProduct = async (product) => {
 
 export const getProductById = async (id) => {
     try {
-        const response = await axios.get(`http://localhost:8080/products/${id}`);
+        const response = await axios.get(`http://localhost:8080/api/products/${id}`);
         return response.data;
     } catch (error) {
         console.error("Error fetching product by id", error);
@@ -35,7 +35,7 @@ export const getProductById = async (id) => {
 export const updateProduct = async (product) => {
     try {
         const response = await axios.put(
-            `http://localhost:8080/products/${product.id}`,
+            `http://localhost:8080/api/products/${product.id}`,
             product
         );
         return response.data;
